@@ -25,8 +25,8 @@ public class IterativeDepthFirstGenerator : IMazeGenerator
                 cellGrid[y, x].x = x*2+1;
                 cellGrid[y, x].y = y*2+1;
                 
-                //mazeGrid[y*2+1, x*2+1] = true;
-                SetCellAndRecord(ref mazeGrid, y*2+1, x*2+1, true);
+                mazeGrid[y*2+1, x*2+1] = true;
+                //SetCellAndRecord(ref mazeGrid, y*2+1, x*2+1, true);
                 
                 //give the cells references to their neighbours
                 if (y + 1 < height) cellGrid[y, x].topNeighbour = cellGrid[y + 1, x];

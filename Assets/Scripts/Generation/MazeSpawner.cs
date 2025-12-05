@@ -46,15 +46,17 @@ public class MazeSpawner : MonoBehaviour
             //At the moment I don't know why, but at editor time, DestroyImmediate doesn't always work
             while (transform.childCount > 0 && tries <= 15)
             {
-                for (int j = 0; j < transform.childCount; j++)
+                for (int j = transform.childCount-1; j >= 0; j--)
                 {
                     DestroyImmediate(transform.GetChild(j).gameObject, true);
                 }
+
+                tries++;
             }
         }
         else
         {
-            for (int i = 0; i < transform.childCount; i++)
+            for (int i = transform.childCount-1; i >= 0 ; i--)
             {
                 Destroy(transform.GetChild(i).gameObject);
             }
@@ -157,6 +159,9 @@ public class MazeSpawner : MonoBehaviour
         {
             for (int j = 0; j < mazeGrid.GetLength(1); j++)
             {
+                if (i % 2 == 1 && j % 2 == 1)
+                    continue;
+                
                 var wall = Instantiate(wallPrefab, new Vector3(i, 0, j), Quaternion.identity);
                 wall.transform.parent = gameObject.transform;
                 spawnedWalls[i, j] = wall;
