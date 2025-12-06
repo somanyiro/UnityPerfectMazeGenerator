@@ -159,8 +159,7 @@ public class MazeSpawner : MonoBehaviour
         {
             for (int j = 0; j < mazeGrid.GetLength(1); j++)
             {
-                if (i % 2 == 1 && j % 2 == 1)
-                    continue;
+                if (i % 2 == 1 && j % 2 == 1) continue; //skip cell positions
                 
                 var wall = Instantiate(wallPrefab, new Vector3(i, 0, j), Quaternion.identity);
                 wall.transform.parent = gameObject.transform;
